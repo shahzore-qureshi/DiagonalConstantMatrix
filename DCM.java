@@ -8,7 +8,7 @@ import java.util.Queue;
  ****************************/
 public class DCM {
 
-  public static void main (String[] args) throws Exception {
+  public static void main (String[] args) {
 		ArrayList<ArrayList<Integer>> matrix = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> tempRow = new ArrayList<Integer>();
 		int rowNumber = 0;
@@ -44,7 +44,7 @@ public class DCM {
 						//the end of the row.
 						if(j != row.size() - 1) {
 							queue.add(row.get(j));
-							System.out.println("added " + row.get(j) + " to queue");
+							//System.out.println("added " + row.get(j) + " to queue");
 						}
 					} else if(i > 0 && i < matrix.size() - 1) {
 						//If this is a row that is neither first nor last,
@@ -52,11 +52,12 @@ public class DCM {
 						//to the queue.
 						if(j == 0) {
 							queue.add(row.get(j));
-							System.out.println("added " + row.get(j) + " to queue");
+							//System.out.println("added " + row.get(j) + " to queue");
 						} else {
 							Integer integer = queue.remove();
 							if(row.get(j) != integer) {
-								throw new Exception("Matrix is not diagonal constant.");
+								System.out.println("Matrix is not diagonal constant.");
+								return;
 							}
 							if(j != row.size() - 1) {
 								queue.add(integer);
@@ -66,7 +67,8 @@ public class DCM {
 						if(j > 0) {
 							Integer integer = queue.remove();
 							if(row.get(j) != integer) {
-								throw new Exception("Matrix is not diagonal constant.");
+								System.out.println("Matrix is not diagonal constant.");
+								return;
 							}
 						}
 					}
